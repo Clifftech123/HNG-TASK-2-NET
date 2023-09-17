@@ -1,0 +1,9 @@
+version: 3.4 
+
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+
