@@ -1,9 +1,19 @@
-version: 3.4 
-
+version: '3.4'
 
 networks:
   dev:
     driver: bridge
 
 services:
-
+  hng-task2:
+    image: docker.io/library/hngtask2
+    depends_on:
+      - app_db
+    container_name: hng-task2-services
+    ports:
+      - "8088:80"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      connectionString__defaultConnection: "user id=postgres;password=postgres;server=app_db;port=5432;database=HngTaskDb;pooling=true;integratedSecurity=true"
