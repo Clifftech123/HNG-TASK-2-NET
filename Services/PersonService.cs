@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HNG_Task_2_NET.Services
 {
-    public class PersonService
+    public class PersonService : IPersonService
     {
         private readonly ApiDbContext _context;
 
@@ -18,7 +18,7 @@ namespace HNG_Task_2_NET.Services
         {
             return await _context.Set<Person>().ToListAsync();
 
-           
+
         }
 
         // Get a person by ID
@@ -80,5 +80,11 @@ namespace HNG_Task_2_NET.Services
         {
             return _context.Set<Person>().Any(e => e.Id == id);
         }
+
+        // Get a person by Name
+        public async Task<Person> GetPersonByNameAsync(string name)
+            => (await _context.Set<Person>().FirstOrDefaultAsync(p => p.Name == name)) ??
+            throw new ArgumentException("Person not found");
+
     }
 }

@@ -1,4 +1,5 @@
 using HNG_Task_2_NET.Data;
+using HNG_Task_2_NET.Services;
 using Microsoft.EntityFrameworkCore;
 
 internal class Program
@@ -13,6 +14,7 @@ internal class Program
 
 
         builder.Services.AddDbContext<ApiDbContext>(options => options.UseNpgsql(connectionString));
+        builder.Services.AddTransient<IPersonService, PersonService>();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -28,7 +30,7 @@ internal class Program
             app.UseSwaggerUI();
         }
 
-    
+
 
         app.UseAuthorization();
 
