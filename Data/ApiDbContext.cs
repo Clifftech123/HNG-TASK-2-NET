@@ -13,5 +13,5 @@ public class ApiDbContext : DbContext
 
 
     public DbSet<Person> People { get; set; } = null!;
-    public object Persons { get; internal set; }
+   
 }
