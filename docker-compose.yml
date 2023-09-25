@@ -16,4 +16,25 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      connectionString__defaultConnection: "user id=postgres;password=postgres;server=app_db;port=5432;database=HngTaskDb;pooling=true;integratedSecurity=true"
+     - "connectionString__defaultConnection=user id=postgres;password=postgres;server=app_db;port=5432;database=HngTaskDb;pooling=true;integratedSecurity=true"
+     - "ASPNETCORE_URLS=http://*:80"
+    networks:
+      - dev
+
+  app_db:
+    image: postgres
+    container_name: hng-task2-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=HngTaskDb
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    networks:
+      - dev
+
+volumes:
+  db-data:
