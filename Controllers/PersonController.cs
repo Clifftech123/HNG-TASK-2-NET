@@ -10,7 +10,6 @@ namespace HNG_Task_2_NET.Controllers
     public class PersonsController : ControllerBase
     {
         private readonly IPersonService _personService;
-
         public PersonsController(IPersonService personService)
         {
             _personService = personService;
@@ -91,11 +90,7 @@ namespace HNG_Task_2_NET.Controllers
             return NoContent();
         }
 
-        //private bool PersonExists(int id)
-        //{
-        //    // Check if a person with the specified ID exists in the database
-        //    return _context.Set<Person>().Any(e => e.Id == id);
-        //}
+        
     }
 
 }
