@@ -18,4 +18,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="docker-compose.yml" />
+    <None Remove="dockerfile" />
+    <None Remove=".dockerignore" />
+  </ItemGroup>
+
 </Project>
